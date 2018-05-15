@@ -20,7 +20,7 @@ public class AccountWithoutSync {
         while (!executor.isTerminated()) {
         }
 
-        System.out.println("What is the balance?" + account.getBalance());
+        System.out.println("What is the balance? " + account.getBalance());
     }
 
 
@@ -51,3 +51,12 @@ public class AccountWithoutSync {
         }
     }
 }
+
+/*
+    Before the "synchronized" keyword was added to the deposit method, the balance output was an incorrect value.
+    This was due to a phenomenon referred to as a 'race condition'. In a race condition, multiple threads are accessing
+    a critical region at the same time. Multiple threads were accessing the deposit method at the same time,
+    overwriting values. To make the class thread safe, we use the 'synchronized' keyword in the critical region that is
+    the deposit() method of the Account class. This implements a thread lock before the method is executed.
+
+ */
